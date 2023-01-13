@@ -7,7 +7,7 @@ edition = "2018"
 test-args = [
   "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04", # enable a device for exit
   "-serial", "stdio", # to let qemu write output to our host system
-  "-display", "none", # no need to show during tests
+  "-display", "none", # no need to show qemu during tests
 ]
 test-success-exit-code = 33 # set the success exit code
 test-timeout = 60 # seconds
@@ -27,4 +27,8 @@ features = ["spin_no_std"]
 # panic = "abort"
 
 [profile.release]
-panic = "abort"
+# panic = "abort"
+
+[[test]]
+name = "should_panic"
+harness = false
